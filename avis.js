@@ -38,6 +38,8 @@ export function ajoutListenersAvis() {
 
 
     const chargeUtile = JSON.stringify(avis);
+
+    
     // Appel de la fonction fetch avec toutes les informations nécessaires
     fetch("http://localhost:8081/avis", {
         method: "POST",
