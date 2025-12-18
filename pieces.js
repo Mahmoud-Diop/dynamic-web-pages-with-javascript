@@ -3,9 +3,15 @@ import { ajoutListenersAvis, ajoutListenerEnvoyerAvis, afficherAvis, afficherGra
 let pieces = window.localStorage.getItem('pieces');
 
 if (pieces === null) {
-    // Récupération des pièces depuis l'API
-    const reponse = await fetch('http://localhost:8081/pieces/');
-    pieces = await reponse.json();
+    try {
+        // Récupération des pièces depuis l'API
+        const reponse = await fetch('http://localhost:8081/pieces/');
+        pieces = await reponse.json();
+    } catch (erreur) {
+        console.error("Erreur:", erreur);
+    }
+
+
     // Transformation des pièces en JSON
     const valeurPieces = JSON.stringify(pieces);
     // Stockage des informations dans le localStorage
